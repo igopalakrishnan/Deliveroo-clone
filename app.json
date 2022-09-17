@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "sdkVersion": "46.0.0",
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "description": ""
   }
 }
