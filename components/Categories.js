@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import CategoryCard from './CategoryCard'
+import CategoryCard from './CategoryCard';
+import sanityClient, { urlFor } from "../sanity";
 
 const Categories = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        sanityClient.fetch(`
+        *[_type == "category"]
+        `).then((data) => {
+            setCategories(data);
+        })
+    }, []);
+
+    console.log(categories)
+    
     return (
         <ScrollView
             contentContainerStyle={{
@@ -12,41 +26,16 @@ const Categories = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
         >
-            {/* CategoryCard */}
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 1"
-            />
 
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 2"
-            />
+            {categories.map((category) => (
+                <CategoryCard
+                key={category._id}
+                imgUrl={urlFor(category.image).width(200).url()}
+                title={category.name}
+                />
 
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 3"
-            />
-
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 1"
-            />
-
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 2"
-            />
-
-            <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 3"
-            />
-
-             <CategoryCard
-                imgUrl='https://media-cdn.tripadvisor.com/media/photo-s/19/3b/00/06/sushi-place.jpg'
-                title="testing 3"
-            />
+            ))}
+            
 
         </ScrollView>
     )
