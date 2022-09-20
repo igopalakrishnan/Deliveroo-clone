@@ -55,7 +55,7 @@ export default {
     },
     {
       name: "dishes",
-      type: "string",
+      type: "array",
       title: "Dishes",
       of: [{ type: "reference", to: [{ type: "dish" }] }],
     },
