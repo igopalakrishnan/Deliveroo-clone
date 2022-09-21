@@ -2,6 +2,7 @@
   "expo": {
     "name": "deliveroo-clone",
     "slug": "deliveroo-clone",
+    "description": "",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +19,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "y"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.gopalakrishnan_m.deliverooclone"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,6 +38,10 @@
       "ios",
       "web"
     ],
-    "description": ""
+    "extra": {
+      "eas": {
+        "projectId": "61efbb9d-706e-4c4e-a05b-7350a82831fe"
+      }
+    }
   }
 }
