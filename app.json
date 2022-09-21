@@ -32,7 +32,8 @@
     "sdkVersion": "46.0.0",
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "web"
     ],
     "description": ""
   }
